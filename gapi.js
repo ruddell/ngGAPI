@@ -1,3 +1,24 @@
+/*
+Copyright (c) 2013 Christian Smith, http://anvil.io
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
 'use strict';
 
 angular.module('gapi', [])
@@ -25,8 +46,8 @@ angular.module('gapi', [])
    */
 
 
-
-  .factory('GAPI', function ($q, $http, $log, GoogleApp) {
+  
+  .factory('GAPI', ['$q', '$http', '$log', 'GoogleApp', function ($q, $http, $log, GoogleApp) {
 
     /**
      * GAPI Credentials
@@ -412,14 +433,14 @@ angular.module('gapi', [])
     }
 
     return GAPI;
-  })
+  }])
 
 
   /**
    * Youtube API
    */
 
-  .factory('Youtube', function (GAPI) {
+  .factory('Youtube',  ["GAPI", function (GAPI) {
     var Youtube = new GAPI('youtube', 'v3', {
       activities:       ['list', 'insert'],
       channels:         ['list', 'update'],
@@ -456,7 +477,7 @@ angular.module('gapi', [])
     }
 
     return Youtube;
-  })
+  }])
 
 
   /**
@@ -464,7 +485,7 @@ angular.module('gapi', [])
    */
 
 
-  .factory('Blogger', function (GAPI) {
+  .factory('Blogger',  ["GAPI", function (GAPI) {
 
     var Blogger = new GAPI('blogger', 'v3', {
       users:        ['get'],
@@ -549,14 +570,14 @@ angular.module('gapi', [])
 
     return Blogger;
 
-  })
+  }])
 
 
   /**
    * Calendar API
    */
 
-  .factory('Calendar', function (GAPI) {
+  .factory('Calendar',  ["GAPI", function (GAPI) {
     var Calendar = new GAPI('calendar', 'v3', {
       colors: ['get'],
       calendars: ['get', 'insert', 'update', 'delete', 'patch', {
@@ -603,14 +624,14 @@ angular.module('gapi', [])
     };
 
     return Calendar;
-  })
+  }])
 
 
   /**
    * Drive API
    */
 
-  .factory('Drive', function (GAPI) {
+  .factory('Drive',  ["GAPI", function (GAPI) {
     var Drive = new GAPI('drive', 'v2', {
       files:          ['get', 'list', 'insert', 'update', 'delete', 'patch', {
         children:     ['get', 'list', 'insert', 'delete'],
@@ -673,14 +694,14 @@ angular.module('gapi', [])
 
 
     return Drive;
-  })
+  }])
 
 
   /**
    * Google+ API
    */
 
-  .factory('Plus', function (GAPI) {
+  .factory('Plus',  ["GAPI", function (GAPI) {
     var Plus = new GAPI('plus', 'v1', {
       people:       ['get', {
         activities: ['list']
@@ -723,14 +744,14 @@ angular.module('gapi', [])
     };
 
     return Plus;
-  })
+  }])
 
 
   /**
    * Admin Directory API
    */
 
-  .factory('Directory', function (GAPI) {
+  .factory('Directory',  ["GAPI", function (GAPI) {
     var Directory = new GAPI('admin/directory', 'v1', {
       users: ['get', 'insert', 'update', 'delete'],
       groups: ['get', 'insert', 'update', 'delete', 'list', 'patch', {
@@ -753,5 +774,5 @@ angular.module('gapi', [])
     };
 
     return Directory;
-  })
+  }])
 
