@@ -11,13 +11,13 @@ Currently Youtube, Google+, Google Calendar, and parts of Blogger and Google Dri
 
 [Bower](http://bower.io/) is the quickest way to include ngGAPI in your project.
 
-    $ bower install https://github.com/christiansmith/ngGAPI.git --save
+    $ bower install https://github.com/ruddell/ngGAPI.git --save
 
     <script src="bower_components/ngGAPI/gapi.js"></script>
 
 If you don't use Bower, just download `gapi.js` into your scripts directory.
 
-    $ curl -O https://raw.github.com/christiansmith/ngGAPI/master/gapi.js
+    $ curl -O https://raw.github.com/ruddell/ngGAPI/master/gapi.js
 
     <script src="your/js/path/gapi.js"></script>
 
